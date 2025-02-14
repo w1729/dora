@@ -25,18 +25,7 @@ export function Layout({ children }: { children: ReactNode }) {
             >
               Dashboard
             </Link>
-            {/* <Link
-              className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-300"
-              href="/request"
-            >
-              Request
-            </Link>
-            <Link
-              className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-300"
-              href="/operator"
-            >
-              Operator
-            </Link> */}
+          
             <Link
               className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-300"
               href="/proposal"

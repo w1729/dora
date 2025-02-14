@@ -11,6 +11,12 @@ A revolutionary platform simplifying ZK proof verification by enabling native to
 ## Overview
 DoraNode is a decentralized service that simplifies **zero-knowledge proof (ZKP) verification** on the **ZKVerify Chain**. It enables users to generate ZK proofs and submit them for verification without needing a dedicated ZKVerify-supported wallet or ACME gas tokens.
 
+When I started building for the zkVerify hackathon, I had a vision: blockchain is a technology with the potential to create massive societal change. However, for this transformation to happen, blockchain must be accessible to everyone, without borders.  
+
+Currently, the majority of people in the blockchain space have a technical background, and that needs to change. Blockchain should be in everyone's hands.  
+
+With this in mind, I designed DoraNode to remove the complexity. We eliminate the abstract layers so that everything happens in the background—users don’t need to worry about the technical details. They simply generate a proof, and DoraNode handles the rest.
+
 ## 🌟 Features
 
 - **Native Token Payments**: Pay verification fees in your chain's native tokens
@@ -19,6 +25,130 @@ DoraNode is a decentralized service that simplifies **zero-knowledge proof (ZKP)
 - **AI Integration**: Automated proposal review and bias detection
 - **ZKVRF Implementation**: Fair and verifiable random selection
 
+#  DoraNode Architecture
+<img src="images/6.png" height="500"/>
+
+## DoraNode Architecture  
+
+### Overview  
+DoraNode is designed with a simple architecture to ensure ease of integration.  
+
+### Key Components  
+- **Runs on Docker** – DoraNode operates within a Docker container, using port **4339**.  
+- **Proof Submission** – dApps send proof data to DoraNode for verification.  
+- **ZKVerify Integration** – Submitted proofs are forwarded to the ZKVerify chain for validation.  
+- **Response Handling** – Once verification is complete, DoraNode returns the transaction details to the requester.  
+
+### Example Proof Submission (Using Axios)  
+```javascript
+const axios = require('axios');
+
+// Define the DoraNode service port
+const doraNodePort = 4339;
+
+// Define the request payload
+const data = {
+    vkey: "",
+    proof: "",
+    pubsignal: [],
+};
+
+// Send the POST request
+axios.post(`http://localhost:${doraNodePort}/verify`, data)
+    .then(response => {
+        console.log(response.data);
+    })
+    .catch(error => {
+        console.error("Error:", error.response ? error.response.data : error.message);
+    });
+```
+
+This example demonstrates how dApps can interact with DoraNode by sending proof data for verification. currenlty only supports ultraplonk.(more coming soon.....)
+<br>
+## ZKVRF Architecture  
+<img src="images/7.png" height="500"/>
+
+## ⚠️  Note
+>  ZKVRF is a Verifiable Random Function (VRF) project re-implemented in Circom and Noir for zkVerify. Additionally, an automated operator node has been implemented.
+
+### Workflow  
+
+1. **VRF Proof Generation**  
+   - The Operator Node generates a VRF proof based on incoming requests.  
+   - The proof is then sent to DoraNode for verification.  
+
+2. **Randomness Request Event**  
+   - When randomness is requested on-chain, an event is emitted:  
+   ```solidity
+   event RandomnessRequested(
+       uint256 indexed requestId,
+       bytes32 indexed operatorPublicKey,
+       address indexed requester,
+       uint16 minBlockConfirmations,
+       uint32 callbackGasLimit,
+       uint256 nonce
+   );
+   ```  
+
+3. **Fetching Requests**  
+   - The Operator Node queries the Subgraph Node every **5 seconds** to fetch new randomness requests.  
+
+4. **Randomness Fulfillment**  
+   - Once the request is fulfilled and randomness is generated, an event is triggered:  
+   ```solidity
+   event RandomnessFulfilled(
+       uint256 indexed requestId,
+       bytes32 indexed operatorPublicKey,
+       address indexed requester,
+       uint256 nonce,
+       uint256 randomness
+   );
+   ```  
+
+This ensures a seamless process where the Operator Node continuously listens for randomness requests, generates VRF proofs, and submits them for verification.
+## Key Features
+
+### Secure Randomness Properties
+
+- **Unpredictability**: Random numbers cannot be guessed in advance
+- **Impartiality**: Results are generated without bias
+- **Auditability**: The random number generation process is fully verifiable
+- **Consistency**: Reliable availability when needed
+
+### Technical Advantages
+
+- **Universal Access**: Generate random numbers directly through a web browser
+- **No Special Software**: Works with standard web browsers
+
+## Benefits
+
+ZKRand addresses the common trade-offs found in current randomness technologies by providing a balanced solution that optimizes:
+
+- Availability
+- Cost efficiency
+- Bias resistance
+- System uptime
+
+# ZKVRF-Based Fair Grant Selection Architecture
+<img src="images/8.png" height="500"/>
+
+### AI Integration  
+- **AI Model Used** – Meta Llama 3.1 8B Instruct Turbo powers the selection process.  
+- **Chatbot Integration** – A chatbot is embedded in the frontend to assist users with zkVerify-related queries.  
+- **Crypto Price Feed** – Integrated into the chatbot for demonstration purposes.  
+
+### Grant Proposal Evaluation  
+1. **Proposal Submission**  
+   - All grant proposals are stored on **IPFS** using **Pinata**.  
+
+2. **Proposal Review Process**  
+   - After the proposal period ends, each grant is evaluated by:  
+     - An **AI Agent** (for initial assessment).  
+     - A **Peer Review Process** based on **zkVRF** for fair and unbiased selection.  
+
+This approach ensures transparency, decentralization, and an AI-driven evaluation process for zkVRF-based grant selection.
+
+<br><br>
 
 # DoraNode and Operator Node Setup using Docker
 
@@ -131,35 +261,6 @@ To set up and run the frontend, follow these steps:
 
 
 
-## ZKVRF
-## ⚠️  Note
->  ZKVRF is a Verifiable Random Function (VRF) project re-implemented in Circom and Noir for zkVerify. Additionally, an automated operator node has been implemented.
 
-ZKRand is a specialized deterministic public-key cryptographic system that leverages zk-SNARK technology through Circom to provide verifiable random numbers. The system is designed to serve decentralized applications on the Citrea chain, particularly for use cases such as:
-
-
-## Key Features
-
-### Secure Randomness Properties
-
-- **Unpredictability**: Random numbers cannot be guessed in advance
-- **Impartiality**: Results are generated without bias
-- **Auditability**: The random number generation process is fully verifiable
-- **Consistency**: Reliable availability when needed
-
-### Technical Advantages
-
-- **Universal Access**: Generate random numbers directly through a web browser
-- **No Special Software**: Works with standard web browsers
-- **EVM Compatibility**: Functions on any Ethereum Virtual Machine network with EC precompile support
-
-## Benefits
-
-ZKRand addresses the common trade-offs found in current randomness technologies by providing a balanced solution that optimizes:
-
-- Availability
-- Cost efficiency
-- Bias resistance
-- System uptime
 
 

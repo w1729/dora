@@ -26,16 +26,7 @@ export default function DashboardPage() {
         }}
       />
       <Separator />
-      {/* <RequestsTable
-        requests={data.requests.sort((r1, r2) =>
-          BigInt(r1.request.requestId) > BigInt(r2.request.requestId) ? -1 : 1
-        )}
-        onRefresh={() =>
-          setTimeout(() => {
-            refresh();
-          }, 2000)
-        }
-      /> */}
+    
     </Container>
   );
 }
