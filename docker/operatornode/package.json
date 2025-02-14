@@ -1,0 +1,38 @@
+{
+  "name": "login-service",
+  "version": "0.0.1",
+  "description": "Login Service",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "start": "ts-node src/index.ts",
+    "prettier": "prettier . --write",
+    "lint": "eslint . --ext .ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "0xkvn",
+  "license": "MIT",
+  "dependencies": {
+    "@aztec/bb.js": "^0.63.1",
+    "@noir-lang/backend_barretenberg": "^0.36.0",
+    "@noir-lang/noir_js": "^1.0.0-beta.1",
+    "axios": "^1.7.9",
+    "dotenv": "^16.3.1",
+    "ethers": "^6.13.5",
+    "graphql": "^16.10.0",
+    "graphql-request": "^7.1.2",
+    "moleculer": "^0.14.31",
+    "moleculer-web": "^0.10.6",
+    "ts-node": "^10.9.1",
+    "zkverifyjs": "^0.6.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.1"
+  }
+}

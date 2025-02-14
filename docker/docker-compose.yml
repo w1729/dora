@@ -1,0 +1,45 @@
+# version: "2.4"
+
+# services:
+#   doranode:
+#     image: "node:23-alpine"
+#     user: "root"
+#     build:
+#       context: ./doranode
+#     working_dir: /app
+#     volumes:
+#       - ./doranode:/app
+#     env_file:
+#       - .env
+#     ports:
+#       - "${DORANODE_PORT}:${DORANODE_PORT}"
+#     command: ./run.sh
+
+version: "2.4"
+
+services:
+  doranode:
+    image: "node:23-alpine"
+    user: "root"
+    build:
+      context: ./doranode
+    working_dir: /app
+    volumes:
+      - ./doranode:/app
+    env_file:
+      - .env
+    ports:
+      - "${DORANODE_PORT}:${DORANODE_PORT}"
+    command: ./run.sh
+
+  operatornode:
+    image: "node:23-alpine"
+    user: "root"
+    build:
+      context: ./operatornode
+    working_dir: /app
+    volumes:
+      - ./operatornode:/app
+    env_file:
+      - .env
+    command: ./run.sh
