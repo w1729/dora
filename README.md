@@ -257,6 +257,24 @@ To set up and run the frontend, follow these steps:
 - If using a specific framework (e.g., React, Vue, Next.js), mention any extra configuration steps required.
 - Consider adding environment variable setup instructions if applicable.
 
+# Proofs and Deployment Address
+
+[ZkVerify(all proof verification details)](https://zkverify-explorer.zkverify.io/accounts/xpistKg5cTuaNjMvtwvAJN8hS84i8sgpmHKREdDNGB5DdfqpP?tab=extrinsics&page=1)
+
+## Arbitrum 
+
+[paymaster](https://sepolia.arbiscan.io/address/0x5f243bdac11c59217904f25fd604496b7d7bd438)
+[VRF](https://sepolia.arbiscan.io/address/0xb55b86e70e3c510528dca6a7b061133bd310e780)
+
+
+## EDU Chain
+
+[paymaster](https://edu-chain-testnet.blockscout.com/address/0x57949402c712f2eeeaebadb47a9af7ce4af1f267)
+[VRF](https://edu-chain-testnet.blockscout.com/address/0xfBcD95F3E59c60E1706C7655c2b30a504ec84589)
+
+
+
+
 
 
 
