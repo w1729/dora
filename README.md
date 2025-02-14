@@ -263,14 +263,15 @@ To set up and run the frontend, follow these steps:
 
 ## Arbitrum 
 
-[paymaster](https://sepolia.arbiscan.io/address/0x5f243bdac11c59217904f25fd604496b7d7bd438)
-[VRF](https://sepolia.arbiscan.io/address/0xb55b86e70e3c510528dca6a7b061133bd310e780)
-
+[paymaster](https://sepolia.arbiscan.io/address/0x5f243bdac11c59217904f25fd604496b7d7bd438) <br>
+[VRF](https://sepolia.arbiscan.io/address/0xb55b86e70e3c510528dca6a7b061133bd310e780) <br>
+[GrantProposalSystem](https://sepolia.arbiscan.io/address/0xee584abb8eae4a47c6683ca648279b4ea24c8357)
 
 ## EDU Chain
 
-[paymaster](https://edu-chain-testnet.blockscout.com/address/0x57949402c712f2eeeaebadb47a9af7ce4af1f267)
-[VRF](https://edu-chain-testnet.blockscout.com/address/0xfBcD95F3E59c60E1706C7655c2b30a504ec84589)
+[paymaster](https://edu-chain-testnet.blockscout.com/address/0x57949402c712f2eeeaebadb47a9af7ce4af1f267) <br>
+[VRF](https://edu-chain-testnet.blockscout.com/address/0xfBcD95F3E59c60E1706C7655c2b30a504ec84589) <br>
+[GrantProposalSystem](https://edu-chain-testnet.blockscout.com/address/0x0fa75a206B62971e03898a0F07e7439b186aBaC7)
 
 
 
