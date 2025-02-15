@@ -1,8 +1,6 @@
 ## Demo Video
-[Watch Demo Video](https://youtu.be/tQPaPGo0pyA)
+[Watch Demo Video](https://youtu.be/ETlkud7UdtU)
 
-## Explanation Video
-[Watch Explanation Video](https://youtu.be/3EEa9kmQEhg)
 
 # 🚀 DoraNode
 
